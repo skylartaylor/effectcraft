@@ -24,6 +24,8 @@ jobs:
     with:
       app-name: effectcraft
       app-title: EffectCraft
+      # packaging/macos/package.sh renders the DMG background from dmg/background.svg with resvg.
+      macos-resvg: true
       version: ${{ inputs.version }}
     secrets:
       APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
