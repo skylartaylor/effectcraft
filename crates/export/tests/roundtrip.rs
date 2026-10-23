@@ -52,6 +52,7 @@ fn settings() -> RenderSettings {
     RenderSettings { time_span: TimeSpan::LengthOfComp, ..Default::default() }
 }
 
+/// Exports the standard test comp and checks progress for all [`FRAMES`] frames.
 fn run(p: &Project, cid: ItemId, footage: &dyn FootageSource, om: &OutputModule, path: &Path) -> effectcraft_export::Report {
     run_frames(p, cid, footage, om, path, FRAMES)
 }
@@ -233,6 +234,8 @@ fn prores_4444_with_alpha() {
     }
 }
 
+/// Checks stored alpha run codewords in exported MOVs across both 4444 profiles,
+/// alpha modes and motion-blur settings, without relying on permissive decoders.
 #[test]
 fn prores_alpha_final_run_is_present_in_exported_movies() {
     let dir = out_dir("prores-alpha-final-run");
